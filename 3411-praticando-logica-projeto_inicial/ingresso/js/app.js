@@ -1,33 +1,45 @@
-let pista = 100;
-let superior = 200;
-let inferior = 400;
-
 function comprar(){
-    let ingresso = document.getElementById('tipo-ingresso').value 
-    let quantidade = document.getElementById('qtd').value
+    let ingresso = document.getElementById('tipo-ingresso').value;
+    let quantidade = parseInt(document.getElementById('qtd').value);
+
     if (ingresso == 'pista'){
-        if (pista >= quantidade){
-            pista = pista - quantidade;
-            document.getElementById('qtd-pista').innerHTML = pista;
-        } else {
-            alert('Quantidade indisponivel para a pista')
-        }  
+        pista(quantidade);
     } else if (ingresso == 'superior'){
-        if (superior >= quantidade){
-            superior = superior - quantidade;
-            document.getElementById('qtd-superior').innerHTML = superior;
-        }
-        else{
-            alert('Quantidade indisponivel para as cadeiras superiores');
-        }
-    } else if (ingresso == 'inferior'){
-        if (inferior >= quantidade){
-            inferior = inferior - quantidade;
-            document.getElementById('qtd-inferior').innerHTML = inferior;
-
-        }else{
-            alert('Quantidade indisponivel para as cadeiras inferiores');
-        }
+        superior (quantidade);
+    } else {
+        inferior(quantidade);    
     }
 
+}
+
+function pista(quantidade){
+    qtpista = parseInt(document.getElementById('qtd-pista').textContent);
+    if (qtpista>= quantidade){
+        qtpista = qtpista - quantidade;
+        document.getElementById('qtd-pista').innerHTML = qtpista;
+    } else {
+        alert('Quantidade indisponivel para a pista')
+    }  
+}
+
+function superior(quantidade){
+    qtsuperior = parseInt(document.getElementById('qtd-superior').textContent);
+    if (qtsuperior >= quantidade){
+        qtsuperior = qtsuperior - quantidade;
+        document.getElementById('qtd-superior').innerHTML = qtsuperior;
     }
+    else{
+        alert('Quantidade indisponivel para as cadeiras superiores');
+    } 
+}
+
+function inferior(quantidade){
+    qtinferior  = parseInt(document.getElementById('qtd-inferior').textContent);
+    if (qtinferior >= quantidade){
+        qtinferior = qtinferior - quantidade;
+        document.getElementById('qtd-inferior').innerHTML = qtinferior;
+
+    }else{
+        alert('Quantidade indisponivel para as cadeiras inferiores');
+    }
+}
