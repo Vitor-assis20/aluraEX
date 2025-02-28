@@ -1,22 +1,33 @@
 let amigos = [];
 
 function adicionar(){
-    let amigo = document.getElementById('nome-amigo');
+    let amigo = document.getElementById('nome-amigo'); //adiciona amigo
+    if (amigo.value == ''){                            //verifica se o campo não esta vazio
+        alert('O nome adicionado não é valido! ');
+        return;
+    }
+    if(amigos.includes(amigo.value.toUpperCase())){                  //verifica se o nome já esta presente na lista **LISTA.includes(TERMO)**
+        alert ('O nome digitado ja foi adicionado! ')
+        return;
+    }
+
     let lista = document.getElementById('lista-amigos');
-    amigos.push(amigo.value);
-    if (amigo.innerHTML == 'Nome do amigo'){
-        alert('O nome adicionado não é valido! ')
-    }else{
-        if (lista.textContent == '') {
+    amigos.push(amigo.value.toUpperCase());                          //adiciona o amigo a lista de amigos
+    if (lista.textContent == '') {                     //se for o primeiro, coloca no HTML somente ele
         lista.textContent = amigo.value;
-    } else {
+    } else {                                           //do contrario, coloca todo o anterior e mais o atual, praticamente no formato lista = lista + 1
         lista.textContent = lista.textContent + ', ' + amigo.value;
     }
-    }
+    
     
 }
 
-function sortear(){
+function sortear() {
+    if (amigos.length < 4) {
+        alert('Insira pelo menos 4 amigos!');
+        return;
+    }
+
     embaralha(amigos);
     let sorteio = document.getElementById('lista-sorteio')
 
